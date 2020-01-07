@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Playlist App</title>
+        <style>
+            body {
+                background-color: beige;
+            }
+             h1 {
+                 color: darkslategray;
+                 font-size: 50px;
+             }
+        </style>
+
+        <script>
+            var mood = prompt("What is your mood? (sad, chill, study, happy)")
+            var sad = new Array("Photograph by Ed Sheeran", "Lucid Dreams by Juice WRLD", "LA CANCION by J Balvin"
+            , "Overkill by Colin Hay");
+            var chill = new Array("Goodie Bag by Still Woozy", "Know Myself by Justine Skye", "Moonshine by Bruno Mars",
+            "Bad Ideas by Tessa Violet");
+            var study = new Array("Alpha Sounds on Youtube", "lofi hip hop radio - beats to relax/study to", "Classical Music");
+            var happy = new Array("Dopamine by Franc Moody", "Crush by Tessa Violet", "Snow by Red Hot Chili Peppers", 
+            "Safe And Sound by Capital Citites");
+
+            switch (mood) {
+                case "sad": var n = Math.floor(Math.random()*sad.length);
+                            document.write("<h1>Play " + sad[n] + ".</h1>");
+                            break;
+                case "chill": var n = Math.floor(Math.random()*chill.length);
+                            document.write("<h1>Play " + chill[n] + ".</h1>");
+                            break;
+                case "study": var n = Math.floor(Math.random()*study.length);
+                            document.write("<h1>Play " + study[n] + ".</h1>");
+                            break;
+                case "happy": var n = Math.floor(Math.random()*happy.length);
+                            document.write("<h1>Play " + happy[n] + ".</h1>");
+                            break;
+                default: alert("Please refresh the page and enter one of the categories in parenthesis.");
+                        document.write("<h1>Refresh Page.</h1>");
+            }
+            
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
