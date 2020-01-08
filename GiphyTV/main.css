@@ -1,0 +1,16 @@
+body {
+	width: 80%;
+	max-width: 1024px;
+	margin: 0 auto;
+}
+
+.container-padding50 {
+	padding-top: 50px;
+}
+
+.container-image {
+	width: 30%;
+	display: block;
+	float: left;
+	margin-right:3%;
+}
