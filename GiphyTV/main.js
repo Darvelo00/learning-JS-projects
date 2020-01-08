@@ -1,6 +1,7 @@
 /* Call Giphy API to retreive trending gifs */
     var api_key = "i5V8e8Qa5DZB0aFda4a1D0Si1GVwANWZ"
-    var url = "http://api.giphy.com/v1/gifs/search?q=Funny+Video&api_key=" + api_key;
+    var q = "Funny+Video"
+    var url = "http://api.giphy.com/v1/gifs/search?q=" + q + "&api_key=" + api_key;
 
 
     //AJAX request
