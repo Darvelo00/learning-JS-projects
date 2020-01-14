@@ -1,4 +1,4 @@
-/* 1. Search Soundcload*/
+/* 1. Search Soundcloud*/
 
 
 /* 2. Query Soundcloud API*/
@@ -20,12 +20,13 @@ SoundCloudAPI.getTrack = function(inputValue) {
 }
 
 SoundCloudAPI.renderTracks = function() {
-    //create 'card' div
+    /*This function recreates the card div found on index.html*/
+    //recreate 'card'
     var card = document.createElement('div');
     card.classList.add("card");
     document.querySelector('.js-search-results').appendChild(card);
 
-    //create 'image' div
+    //recreate 'image'
     var image_div = document.createElement('div');
     image_div.classList.add("image");
 
@@ -34,7 +35,7 @@ SoundCloudAPI.renderTracks = function() {
     image_img.src = "http://www.placekitten.com/290/290";
     image_div.appendChild(image_img);
 
-    //create 'content' div
+    //recreate 'content
     var content = document.createElement('div');
     content.classList.add("content");
 
@@ -43,7 +44,7 @@ SoundCloudAPI.renderTracks = function() {
     header.innerHTML = '<a href="#" target=\"_blank\">\"Science Vs. Romance\"</a>';
     content.appendChild(header);
 
-    //create button
+    //recreate button
     var button = document.createElement('div');
     button.classList.add("ui", "bottom", "attached", "button", "js-button");
 
@@ -53,6 +54,7 @@ SoundCloudAPI.renderTracks = function() {
     
     var buttonText = document.createElement('span');
     buttonText.innerHTML = "Add to playlist";
+    button.appendChild(buttonText);
 
     //append to card
     card.appendChild(image_div);
@@ -63,6 +65,8 @@ SoundCloudAPI.renderTracks = function() {
 
 SoundCloudAPI.init();
 SoundCloudAPI.renderTracks();
+
+
 /* 3. Display the cards*/
  
 
