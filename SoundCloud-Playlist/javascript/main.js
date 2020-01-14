@@ -16,56 +16,58 @@ SoundCloudAPI.getTrack = function(inputValue) {
         q: inputValue
     }).then(function(tracks) {
         console.log(tracks);
+        SoundCloudAPI.renderTracks(tracks);
     });
 }
 
-SoundCloudAPI.renderTracks = function() {
+SoundCloudAPI.renderTracks = function(tracks) {
     /*This function recreates the card div found on index.html*/
-    //recreate 'card'
-    var card = document.createElement('div');
-    card.classList.add("card");
-    document.querySelector('.js-search-results').appendChild(card);
 
-    //recreate 'image'
-    var image_div = document.createElement('div');
-    image_div.classList.add("image");
+    tracks.forEach(function(track) {
+        //recreate 'card'
+        var card = document.createElement('div');
+        card.classList.add("card");
+        document.querySelector('.js-search-results').appendChild(card);
 
-    var image_img = document.createElement('img');
-    image_img.classList.add("image_img");
-    image_img.src = "http://www.placekitten.com/290/290";
-    image_div.appendChild(image_img);
+        //recreate 'image'
+        var image_div = document.createElement('div');
+        image_div.classList.add("image");
 
-    //recreate 'content
-    var content = document.createElement('div');
-    content.classList.add("content");
+        var image_img = document.createElement('img');
+        image_img.classList.add("image_img");                               //image not found png
+        image_img.src = track.artwork_url || 'http://www.thebristolarms.com.au/wp-content/uploads/2018/03/img-not-found.png';
+        image_div.appendChild(image_img);
 
-    var header = document.createElement('div');
-    header.classList.add("header");
-    header.innerHTML = '<a href="#" target=\"_blank\">\"Science Vs. Romance\"</a>';
-    content.appendChild(header);
+        //recreate 'content
+        var content = document.createElement('div');
+        content.classList.add("content");
 
-    //recreate button
-    var button = document.createElement('div');
-    button.classList.add("ui", "bottom", "attached", "button", "js-button");
+        var header = document.createElement('div');
+        header.classList.add("header");
+        header.innerHTML = '<a href="' + track.permalink_url + '" target="_blank">' + track.title + '</a>';
+        content.appendChild(header);
 
-    var icon = document.createElement('i');
-    icon.classList.add("add", "icon");
-    button.appendChild(icon);
-    
-    var buttonText = document.createElement('span');
-    buttonText.innerHTML = "Add to playlist";
-    button.appendChild(buttonText);
+        //recreate button
+        var button = document.createElement('div');
+        button.classList.add("ui", "bottom", "attached", "button", "js-button");
 
-    //append to card
-    card.appendChild(image_div);
-    card.appendChild(content);
-    card.appendChild(button);
+        var icon = document.createElement('i');
+        icon.classList.add("add", "icon");
+        button.appendChild(icon);
+        
+        var buttonText = document.createElement('span');
+        buttonText.innerHTML = "Add to playlist";
+        button.appendChild(buttonText);
+
+        //append to card
+        card.appendChild(image_div);
+        card.appendChild(content);
+        card.appendChild(button);
+    });
 }
 
-
 SoundCloudAPI.init();
-SoundCloudAPI.renderTracks();
-
+SoundCloudAPI.getTrack();
 
 /* 3. Display the cards*/
  
