@@ -1,8 +1,32 @@
 /* 1. Search Soundcloud*/
+var UI = {};
 
+UI.EnterPress = function() {
+    document.querySelector('.js-search').addEventListener('keyup', function(e){
+        var input = document.querySelector("input").value;
+        //look for 'enter' key being pressed
+        if (e.which === 13) {
+            SoundCloudAPI.getTrack(input);
+            UI.ClearScreen();
+        } 
+    })
+}
+UI.EnterPress();
+
+UI.SubmitClick = function() {
+    document.querySelector('.js-submit').addEventListener('click', function() {
+        var input = document.querySelector("input").value;
+        SoundCloudAPI.getTrack(input);
+        UI.ClearScreen();
+    })
+}
+UI.SubmitClick();
+
+UI.ClearScreen = function() {
+    document.querySelector(".js-search-results").innerHTML = "";
+}
 
 /* 2. Query Soundcloud API*/
-
 var SoundCloudAPI = {};
 
 SoundCloudAPI.init = function() {
@@ -10,6 +34,8 @@ SoundCloudAPI.init = function() {
         client_id: 'cd9be64eeb32d1741c17cb39e41d254d'
     });
 }
+SoundCloudAPI.init();
+
 SoundCloudAPI.getTrack = function(inputValue) {
     // find all sounds of q variable
     SC.get('/tracks', {
@@ -90,7 +116,3 @@ SoundCloudAPI.getEmbed = function(track_url) {
 //load songs from previous session
 var sideBar = document.querySelector('.js-playlist');
 sideBar.innerHTML = localStorage.getItem("key");
-
-
-SoundCloudAPI.init();
-SoundCloudAPI.getTrack();
