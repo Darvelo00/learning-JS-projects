@@ -81,9 +81,15 @@ SoundCloudAPI.getEmbed = function(track_url) {
         var box = document.createElement('div');
         box.innerHTML = embed.html;
         sideBar.insertBefore(box, sideBar.firstChild);
+
+        localStorage.setItem("key", sideBar.innerHTML);
+
     });
 }
 
+//load songs from previous session
+var sideBar = document.querySelector('.js-playlist');
+sideBar.innerHTML = localStorage.getItem("key");
 
 
 SoundCloudAPI.init();
