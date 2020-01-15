@@ -77,9 +77,10 @@ SoundCloudAPI.getEmbed = function(track_url) {
         auto_play: true
     }).then(function(embed){
         console.log('oEmbed response: ', embed);
-        console.log(embed.html);
         var sideBar = document.querySelector('.js-playlist');
-        sideBar.innerHTML = embed.html;
+        var box = document.createElement('div');
+        box.innerHTML = embed.html;
+        sideBar.insertBefore(box, sideBar.firstChild);
     });
 }
 
